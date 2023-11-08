@@ -12,6 +12,8 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 // Using the Geolocation Api.
+// - Takes in 2 callback functions. One that get's called on success and the second that get's called when there is an error
+// - The success callback takes in a parameter called the position parameter.
 navigator.geolocation.getCurrentPosition(function(), function(){
-    
-}) // Takes in 2 callback functions. One that get's called on success and the second that get's called when there is an error
+    alert('Could not get your position')
+}) 
