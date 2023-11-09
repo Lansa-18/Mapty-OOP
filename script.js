@@ -39,7 +39,14 @@ if (navigator.geolocation) {
 
         L.marker([lat, lng])
         .addTo(map)
-        .bindPopup('Workout')
+        .bindPopup(L.popup({
+            maxWidth: 250,
+            minWidth: 100,
+            autoClose: false,
+            closeOnClick: false,
+            className: 'running-popup'
+
+        }))
         .openPopup();
 
       })
