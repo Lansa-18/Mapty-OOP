@@ -32,22 +32,23 @@ if (navigator.geolocation) {
       }).addTo(map);
 
       map.on('click', function(mapEvent){
-        console.log(mapEvent);
+        form.classList.remove('hidden')
+        // console.log(mapEvent);
 
-        const {lat, lng} = mapEvent.latlng;
-        console.log(lat, lng);
+        // const {lat, lng} = mapEvent.latlng;
+        // console.log(lat, lng);
 
-        L.marker([lat, lng])
-        .addTo(map)
-        .bindPopup(L.popup({
-            maxWidth: 250,
-            minWidth: 100,
-            autoClose: false,
-            closeOnClick: false,
-            className: 'running-popup',
-        }))
-        .setPopupContent('Workouts')
-        .openPopup();
+        // L.marker([lat, lng])
+        // .addTo(map)
+        // .bindPopup(L.popup({
+        //     maxWidth: 250,
+        //     minWidth: 100,
+        //     autoClose: false,
+        //     closeOnClick: false,
+        //     className: 'running-popup',
+        // }))
+        // .setPopupContent('Workouts')
+        // .openPopup();
 
       })
     },
