@@ -52,6 +52,9 @@ form.addEventListener('submit', function(e){
   // Displaying the marker
   e.preventDefault();
 
+  // Clearing the input fields
+  inputDistance = inputDuration = inputCadence = '';
+
   console.log(mapEvent);
   const {lat, lng} = mapEvent.latlng;
   console.log(lat, lng);
