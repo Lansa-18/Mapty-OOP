@@ -15,6 +15,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // - Takes in 2 callback functions. One that get's called on success and the second that get's called when there is an error
 // - The success callback takes in a parameter called the position parameter.
 
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     function (position) {
@@ -32,23 +33,9 @@ if (navigator.geolocation) {
       }).addTo(map);
 
       map.on('click', function(mapEvent){
-        form.classList.remove('hidden')
-        // console.log(mapEvent);
+        form.classList.remove('hidden');
+        inputDistance.focus();
 
-        // const {lat, lng} = mapEvent.latlng;
-        // console.log(lat, lng);
-
-        // L.marker([lat, lng])
-        // .addTo(map)
-        // .bindPopup(L.popup({
-        //     maxWidth: 250,
-        //     minWidth: 100,
-        //     autoClose: false,
-        //     closeOnClick: false,
-        //     className: 'running-popup',
-        // }))
-        // .setPopupContent('Workouts')
-        // .openPopup();
 
       })
     },
@@ -57,3 +44,24 @@ if (navigator.geolocation) {
     }
   );
 }
+
+form.addEventListener('submit', function(){
+  // Displaying the marker
+
+  console.log(mapEvent);
+  const {lat, lng} = mapEvent.latlng;
+  console.log(lat, lng);
+
+  L.marker([lat, lng])
+  .addTo(map)
+  .bindPopup(L.popup({
+      maxWidth: 250,
+      minWidth: 100,
+      autoClose: false,
+      closeOnClick: false,
+      className: 'running-popup',
+  }))
+  .setPopupContent('Workouts')
+  .openPopup();
+
+})
