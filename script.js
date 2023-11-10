@@ -15,6 +15,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // - Takes in 2 callback functions. One that get's called on success and the second that get's called when there is an error
 // - The success callback takes in a parameter called the position parameter.
 
+let map, mapEvent;
 
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
@@ -24,7 +25,7 @@ if (navigator.geolocation) {
       console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
       const coords = [latitude, longitude]
-      const map = L.map('map').setView(coords, 13);
+      map = L.map('map').setView(coords, 13);
     //   console.log(map);
 
       L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
@@ -32,7 +33,9 @@ if (navigator.geolocation) {
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      map.on('click', function(mapEvent){
+      // Handling clicks on the map
+      map.on('click', function(mapE){
+        mapEvent = mapE;
         form.classList.remove('hidden');
         inputDistance.focus();
 
