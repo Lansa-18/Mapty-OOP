@@ -53,7 +53,7 @@ form.addEventListener('submit', function(e){
   e.preventDefault();
 
   // Clearing the input fields
-  inputDistance = inputDuration = inputCadence = '';
+  inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
 
   console.log(mapEvent);
   const {lat, lng} = mapEvent.latlng;
@@ -70,5 +70,9 @@ form.addEventListener('submit', function(e){
   }))
   .setPopupContent('Workouts')
   .openPopup();
+
+})
+
+inputType.addEventListener('change', function(e){
 
 })
