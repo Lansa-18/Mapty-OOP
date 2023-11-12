@@ -78,3 +78,9 @@ inputType.addEventListener('change', function(e){
   inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
   inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
 })
+
+// 
+function calculateDaysBetweenDates(begin, end){
+  const daysBetweenDates = Math.abs(end - begin) / (1000 * 60 * 60 * 24);
+  return daysBetweenDates;
+}
