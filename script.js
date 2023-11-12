@@ -73,6 +73,7 @@ form.addEventListener('submit', function(e){
 
 })
 
+// The change event listner is available on the select tag and the event listens for any change that has been made in it.
 inputType.addEventListener('change', function(e){
   inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
   inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
