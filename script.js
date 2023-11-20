@@ -17,6 +17,24 @@ const inputElevation = document.querySelector('.form__input--elevation');
 
 let map, mapEvent;
 
+class App {
+  constructor(){
+
+  }
+
+  _getPosition(){}
+
+  _loadMap(){}
+
+  _showForm(){}
+
+  _toggleElevationField(){}
+
+  _newWorkout(){}
+
+  
+}
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(
     function (position) {
@@ -24,9 +42,9 @@ if (navigator.geolocation) {
       const { longitude } = position.coords;
       console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
-      const coords = [latitude, longitude]
+      const coords = [latitude, longitude];
       map = L.map('map').setView(coords, 13);
-    //   console.log(map);
+      //   console.log(map);
 
       L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
         attribution:
@@ -34,13 +52,11 @@ if (navigator.geolocation) {
       }).addTo(map);
 
       // Handling clicks on the map
-      map.on('click', function(mapE){
+      map.on('click', function (mapE) {
         mapEvent = mapE;
         form.classList.remove('hidden');
         inputDistance.focus();
-
-
-      })
+      });
     },
     function () {
       alert('Could not get your position');
@@ -48,34 +64,40 @@ if (navigator.geolocation) {
   );
 }
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', function (e) {
   // Displaying the marker
   e.preventDefault();
 
   // Clearing the input fields
-  inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
+  inputDistance.value =
+    inputDuration.value =
+    inputCadence.value =
+    inputElevation.value =
+      '';
 
   console.log(mapEvent);
-  const {lat, lng} = mapEvent.latlng;
+  const { lat, lng } = mapEvent.latlng;
   console.log(lat, lng);
-
   L.marker([lat, lng])
-  .addTo(map)
-  .bindPopup(L.popup({
-      maxWidth: 250,
-      minWidth: 100,
-      autoClose: false,
-      closeOnClick: false,
-      className: 'running-popup',
-  }))
-  .setPopupContent('Workouts')
-  .openPopup();
-
-})
+    .addTo(map)
+    .bindPopup(
+      L.popup({
+        maxWidth: 250,
+        minWidth: 100,
+        autoClose: false,
+        closeOnClick: false,
+        className: 'running-popup',
+      })
+    )
+    .setPopupContent('Workouts')
+    .openPopup();
+});
 
 // The change event listner is available on the select tag and the event listens for any change that has been made in it.
-inputType.addEventListener('change', function(e){
+inputType.addEventListener('change', function (e) {
   inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
   inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-})
+});
 
+const num = (5 % 10) + 10 - (25 * 8) / 5;
+console.log(num);
