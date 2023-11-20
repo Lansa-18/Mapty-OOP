@@ -18,7 +18,9 @@ const inputElevation = document.querySelector('.form__input--elevation');
 let map, mapEvent;
 
 class App {
-  constructor() {}
+  constructor() {
+    this._getPosition(); // Calling a function inside of the class itself
+  }
 
   _getPosition() {
     if (navigator.geolocation) {
@@ -58,7 +60,7 @@ class App {
 }
 
 const app = new App();
-app._getPosition();
+// app._getPosition(); // Calling a method outside of the class.
 
 form.addEventListener('submit', function (e) {
   // Displaying the marker
