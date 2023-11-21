@@ -24,7 +24,7 @@ class App {
 
   _getPosition() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this._loadMap(), function () {
+      navigator.geolocation.getCurrentPosition(this._loadMap, function () {
         alert('Could not get your position');
       });
     }
@@ -97,5 +97,3 @@ inputType.addEventListener('change', function (e) {
   inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
 });
 
-const num = (5 % 10) + 10 - (25 * 8) / 5;
-console.log(num);
