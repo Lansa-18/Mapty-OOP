@@ -27,7 +27,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
 
     // The change event listner is available on the select tag and the event listens for any change that has been made in it.
-    inputType.addEventListener('change', this._toggleElevationField.bind(this));
+    inputType.addEventListener('change', this._toggleElevationField);
   }
 
   _getPosition() {
