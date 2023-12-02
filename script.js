@@ -27,12 +27,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
 
     // The change event listner is available on the select tag and the event listens for any change that has been made in it.
-    inputType.addEventListener('change', function (e) {
-      inputElevation
-        .closest('.form__row')
-        .classList.toggle('form__row--hidden');
-      inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-    });
+    inputType.addEventListener('change', this._toggleElevationField.bind(this));
   }
 
   _getPosition() {
@@ -71,7 +66,12 @@ class App {
     inputDistance.focus();
   }
 
-  _toggleElevationField() {}
+  _toggleElevationField() {
+    inputElevation
+    .closest('.form__row')
+    .classList.toggle('form__row--hidden');
+  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+  }
 
   _newWorkout(e) {
     // Displaying the marker
