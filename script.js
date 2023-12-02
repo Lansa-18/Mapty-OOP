@@ -15,6 +15,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // - Takes in 2 callback functions. One that get's called on success and the second that get's called when there is an error
 // - The success callback takes in a parameter called the position parameter.
 
+// PARENT WORKOUT CLASS
 class Workout {
   date = new Date();
   id = (new Date() + '').slice(-10);
@@ -27,6 +28,20 @@ class Workout {
   }
 }
 
+// CHILDREN WORKOUT CLASSES
+class Running extends Workout{
+  constructor(coords, distance, duration, cadence){
+    super(coords, distance, duration);
+    this.cadence = cadence
+  }
+}
+
+class Running extends Workout{
+  constructor(coords, distance, duration, elevationGain){
+    super(coords, distance, duration);
+    this.elevationGain = elevationGain
+  }
+}
 class App {
   #map;
   #mapEvent;
