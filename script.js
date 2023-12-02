@@ -24,7 +24,7 @@ class App {
   constructor() {
     this._getPosition(); // Calling a function inside of the class itself
 
-    form.addEventListener('submit');
+    form.addEventListener('submit', this._newWorkout);
 
     // The change event listner is available on the select tag and the event listens for any change that has been made in it.
     inputType.addEventListener('change', function (e) {
@@ -84,7 +84,6 @@ class App {
       inputElevation.value =
         '';
 
-    console.log(this.#mapEvent);
     const { lat, lng } = mapEvent.latlng;
     console.log(lat, lng);
     L.marker([lat, lng])
