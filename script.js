@@ -15,6 +15,18 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // - Takes in 2 callback functions. One that get's called on success and the second that get's called when there is an error
 // - The success callback takes in a parameter called the position parameter.
 
+class Workout {
+  date = new Date();
+  id = (new Date() + '').slice(-10);
+  // NOTE: Never create ID identifiers by yourself, always use third party libraries that generates unique IDs as ID identifiers are an important aspect of every real world application.
+
+  constructor(coords, distance, duration) {
+    this.coords = coords;
+    this.distance = distance; // in km
+    this.duration = duration; // in min
+  }
+}
+
 class App {
   #map;
   #mapEvent;
@@ -65,10 +77,8 @@ class App {
   }
 
   _toggleElevationField() {
-    inputElevation
-    .closest('.form__row')
-    .classList.toggle('form__row--hidden');
-  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+    inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+    inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
   }
 
   _newWorkout(e) {
