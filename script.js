@@ -29,22 +29,24 @@ class Workout {
 }
 
 // CHILDREN WORKOUT CLASSES
-class Running extends Workout{
-  constructor(coords, distance, duration, cadence){
+class Running extends Workout {
+  constructor(coords, distance, duration, cadence) {
     super(coords, distance, duration);
-    this.cadence = cadence
+    this.cadence = cadence;
+    this.calcPace();
   }
 
   calcPace() {
     // Pace is usually defined in min/kilometers
     this.pace = this.duration / this.distance;
+    return this.pace;
   }
 }
 
-class Running extends Workout{
-  constructor(coords, distance, duration, elevationGain){
+class Running extends Workout {
+  constructor(coords, distance, duration, elevationGain) {
     super(coords, distance, duration);
-    this.elevationGain = elevationGain
+    this.elevationGain = elevationGain;
   }
 }
 class App {
