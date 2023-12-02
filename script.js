@@ -15,8 +15,6 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // - Takes in 2 callback functions. One that get's called on success and the second that get's called when there is an error
 // - The success callback takes in a parameter called the position parameter.
 
-// let map, mapEvent;
-
 class App {
   #map;
   #mapEvent;
