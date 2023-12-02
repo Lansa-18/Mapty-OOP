@@ -23,13 +23,26 @@ class App {
 
   constructor() {
     this._getPosition(); // Calling a function inside of the class itself
+
+    form.addEventListener('submit');
+
+    // The change event listner is available on the select tag and the event listens for any change that has been made in it.
+    inputType.addEventListener('change', function (e) {
+      inputElevation
+        .closest('.form__row')
+        .classList.toggle('form__row--hidden');
+      inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+    });
   }
 
   _getPosition() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this._loadMap.bind(this), function () {
-        alert('Could not get your position');
-      });
+      navigator.geolocation.getCurrentPosition(
+        this._loadMap.bind(this),
+        function () {
+          alert('Could not get your position');
+        }
+      );
     }
   }
 
@@ -60,44 +73,35 @@ class App {
 
   _toggleElevationField() {}
 
-  _newWorkout() {}
+  _newWorkout(e) {
+    // Displaying the marker
+    e.preventDefault();
+
+    // Clearing the input fields
+    inputDistance.value =
+      inputDuration.value =
+      inputCadence.value =
+      inputElevation.value =
+        '';
+
+    console.log(this.#mapEvent);
+    const { lat, lng } = mapEvent.latlng;
+    console.log(lat, lng);
+    L.marker([lat, lng])
+      .addTo(this.#map)
+      .bindPopup(
+        L.popup({
+          maxWidth: 250,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: 'running-popup',
+        })
+      )
+      .setPopupContent('Workouts')
+      .openPopup();
+  }
 }
 
 const app = new App();
 // app._getPosition(); // Calling a method outside of the class.
-
-form.addEventListener('submit', function (e) {
-  // Displaying the marker
-  e.preventDefault();
-
-  // Clearing the input fields
-  inputDistance.value =
-    inputDuration.value =
-    inputCadence.value =
-    inputElevation.value =
-      '';
-
-  console.log(mapEvent);
-  const { lat, lng } = mapEvent.latlng;
-  console.log(lat, lng);
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup(
-      L.popup({
-        maxWidth: 250,
-        minWidth: 100,
-        autoClose: false,
-        closeOnClick: false,
-        className: 'running-popup',
-      })
-    )
-    .setPopupContent('Workouts')
-    .openPopup();
-});
-
-// The change event listner is available on the select tag and the event listens for any change that has been made in it.
-inputType.addEventListener('change', function (e) {
-  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
-  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
-});
-
