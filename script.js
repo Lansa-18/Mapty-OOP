@@ -34,6 +34,11 @@ class Running extends Workout{
     super(coords, distance, duration);
     this.cadence = cadence
   }
+
+  calcPace() {
+    // Pace is usually defined in min/kilometers
+    this.pace = this.duration / this.distance;
+  }
 }
 
 class Running extends Workout{
