@@ -128,8 +128,14 @@ class App {
 
     // If the workout is running, create running object
     if (type === 'running') {
-      // Checking if the data is valid
       const cadence = +inputCadence.value;
+      // Checking if the data is valid
+      if (
+        !Number.isFinite(distance) &&
+        !Number.isFinite(duration) &&
+        !Number.isFinite(cadence)
+      )
+        return alert('Inputs have to be positive numbers');
     }
 
     // if the workout is cycling, create a cycling object
