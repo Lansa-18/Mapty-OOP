@@ -18,7 +18,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // PARENT WORKOUT CLASS
 class Workout {
   date = new Date();
-  id = (Date.now() + '').slice(-10);  
+  id = (Date.now() + '').slice(-10);
   // NOTE: Never create ID identifiers by yourself, always use third party libraries that generates unique IDs as ID identifiers are an important aspect of every real world application.
 
   constructor(coords, distance, duration) {
@@ -126,10 +126,9 @@ class App {
     const distance = +inputDistance.value;
     const duration = +inputDuration.value;
 
-    // Checking if the data is valid
-
     // If the workout is running, create running object
     if (type === 'running') {
+      // Checking if the data is valid
       const cadence = +inputCadence.value;
     }
 
