@@ -22,7 +22,7 @@ class Workout {
   // NOTE: Never create ID identifiers by yourself, always use third party libraries that generates unique IDs as ID identifiers are an important aspect of every real world application.
 
   constructor(coords, distance, duration) {
-    this.coords = coords;
+    this.coords = coords; // [latitude, longitude]
     this.distance = distance; // in km
     this.duration = duration; // in min
   }
@@ -57,7 +57,9 @@ class Cycling extends Workout {
   }
 }
 
-
+const run1 = new Running([39, -12], 5.2, 24, 178);
+const cycling1 = new Cycling([39, -12], 27, 95, 523);
+console.log(run1, cycling1);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // APPLICATION ARCHITECTURE
