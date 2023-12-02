@@ -62,7 +62,7 @@ class App {
     }).addTo(this.#map);
 
     // Handling clicks on the map
-    this.#map.on('click', this._showForm);
+    this.#map.on('click', this._showForm.bind(this));
   }
 
   _showForm(mapE) {
@@ -84,7 +84,8 @@ class App {
       inputElevation.value =
         '';
 
-    const { lat, lng } = mapEvent.latlng;
+    // Displaying the marker
+    const { lat, lng } = this.#mapEvent.latlng;
     console.log(lat, lng);
     L.marker([lat, lng])
       .addTo(this.#map)
