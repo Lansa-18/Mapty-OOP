@@ -118,6 +118,8 @@ class App {
   }
 
   _newWorkout(e) {
+    const validInputs = (...inputs) =>
+      inputs.every(inp => Number.isFinite(inp));
     // Displaying the marker
     e.preventDefault();
 
@@ -130,17 +132,16 @@ class App {
     if (type === 'running') {
       const cadence = +inputCadence.value;
       // Checking if the data is valid
-      if (
-        !Number.isFinite(distance) ||
-        !Number.isFinite(duration) ||
-        !Number.isFinite(cadence)
-      )
+      if (!validInputs(distance, duration, cadence))
         return alert('Inputs have to be positive numbers');
     }
 
     // if the workout is cycling, create a cycling object
     if (type === 'cycling') {
       const elevationGain = +inputElevation.value;
+      // Checking if the data is valid
+      if (!validInputs(distance, duration, elevationGain))
+        return alert('Inputs have to be positive numbers');
     }
 
     // Add the new object to the workout array
