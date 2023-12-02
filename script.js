@@ -18,7 +18,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 // PARENT WORKOUT CLASS
 class Workout {
   date = new Date();
-  id = (Date.now() + '').slice(-10);
+  id = (Date.now() + '').slice(-10);  
   // NOTE: Never create ID identifiers by yourself, always use third party libraries that generates unique IDs as ID identifiers are an important aspect of every real world application.
 
   constructor(coords, distance, duration) {
@@ -120,6 +120,25 @@ class App {
   _newWorkout(e) {
     // Displaying the marker
     e.preventDefault();
+
+    // Getting data from the form
+    const type = inputType.value;
+    const distance = +inputDistance.value;
+    const duration = +inputDuration.value;
+
+    // Checking if the data is valid
+
+    // If the workout is running, create running object
+
+    // if the workout is cycling, create a cycling object
+
+    // Add the new object to the workout array
+
+    // Render the new workout on the map as a marker
+
+    // Render the new workout on the list
+
+    // Hide the form and clear the input fields
 
     // Clearing the input fields
     inputDistance.value =
