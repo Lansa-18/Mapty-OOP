@@ -127,6 +127,17 @@ class App {
     inputDistance.focus();
   }
 
+  _hideForm() {
+    // Emptying the input fields
+    inputDistance.value =
+      inputDuration.value =
+      inputCadence.value =
+      inputElevation.value =
+        '';
+
+    form.classList.add('hidden');
+  }
+
   _toggleElevationField() {
     inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
     inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
@@ -185,11 +196,7 @@ class App {
     // Displaying the marker
 
     // Hide the form and clear the input fields
-    inputDistance.value =
-      inputDuration.value =
-      inputCadence.value =
-      inputElevation.value =
-        '';
+    this._hideForm();
   }
 
   _renderWorkoutMarker(workout) {
@@ -209,6 +216,7 @@ class App {
   }
 
   _renderWorkout(workout) {
+    console.log(workout.description);
     let html = `
     <li class="workout workout--${workout.type}" data-id="${workout.id}">
       <h2 class="workout__title">${workout.description}</h2>
@@ -257,7 +265,7 @@ class App {
       </li>
       `;
     }
-    
+
     form.insertAdjacentHTML('afterend', html);
   }
 }
