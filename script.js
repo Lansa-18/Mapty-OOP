@@ -89,6 +89,8 @@ class App {
 
     // The change event listner is available on the select tag and the event listens for any change that has been made in it.
     inputType.addEventListener('change', this._toggleElevationField);
+
+    containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
   _getPosition() {
@@ -266,6 +268,16 @@ class App {
     }
 
     form.insertAdjacentHTML('afterend', html);
+  }
+
+  _moveToPopup(e) {
+    const workoutEl = e.target.closest('.workout');
+    console.log(workoutEl);
+
+    if (!workoutEl) return;
+
+    const workout = this.#workouts.find((work) => work.id === workoutEl.dataset.id);
+    console.log(workout);
   }
 }
 
