@@ -21,10 +21,16 @@ class Workout {
   id = (Date.now() + '').slice(-10);
   // NOTE: Never create ID identifiers by yourself, always use third party libraries that generates unique IDs as ID identifiers are an important aspect of every real world application.
 
+  clicks = 0;
+
   constructor(coords, distance, duration) {
     this.coords = coords; // [latitude, longitude]
     this.distance = distance; // in km
     this.duration = duration; // in min
+  }
+
+  click (){
+    this.clicks++;
   }
 
   _setDescription() {
@@ -213,7 +219,9 @@ class App {
           className: `${workout.type}-popup`,
         })
       )
-      .setPopupContent(`${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`)
+      .setPopupContent(
+        `${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`
+      )
       .openPopup();
   }
 
@@ -273,19 +281,22 @@ class App {
 
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
-    console.log(workoutEl);
 
     if (!workoutEl) return;
 
-    const workout = this.#workouts.find((work) => work.id === workoutEl.dataset.id);
-    console.log(workout);
+    const workout = this.#workouts.find(
+      work => work.id === workoutEl.dataset.id
+    );
 
     this.#map.setView(workout.coords, this.#mapZoomLevel, {
       animate: true,
       pan: {
         duration: 1,
-      }
-    })
+      },
+    });
+
+    // Using the public interface
+    workout.click()
   }
 }
 
