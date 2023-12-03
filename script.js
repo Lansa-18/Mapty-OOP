@@ -165,9 +165,10 @@ class App {
     this.#workouts.push(workout);
 
     // Render the new workout on the map as a marker
-    this.renderWorkoutMarker(workout);
+    this._renderWorkoutMarker(workout);
 
     // Render the new workout on the list
+    this._renderWorkout(workout);
 
     // Displaying the marker
 
@@ -179,7 +180,7 @@ class App {
         '';
   }
 
-  renderWorkoutMarker(workout) {
+  _renderWorkoutMarker(workout) {
     L.marker(workout.coords)
       .addTo(this.#map)
       .bindPopup(
@@ -193,6 +194,10 @@ class App {
       )
       .setPopupContent('My Workout')
       .openPopup();
+  }
+
+  _renderWorkout(workout){
+
   }
 }
 
