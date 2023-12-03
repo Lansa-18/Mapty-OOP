@@ -25,7 +25,6 @@ class Workout {
     this.coords = coords; // [latitude, longitude]
     this.distance = distance; // in km
     this.duration = duration; // in min
-    this._setDescription();
   }
 
   _setDescription() {
@@ -46,6 +45,7 @@ class Running extends Workout {
     super(coords, distance, duration);
     this.cadence = cadence;
     this.calcPace();
+    this._setDescription();
   }
 
   calcPace() {
@@ -61,6 +61,7 @@ class Cycling extends Workout {
     super(coords, distance, duration);
     this.elevationGain = elevationGain;
     this.calcSpeed();
+    this._setDescription();
   }
 
   calcSpeed() {
