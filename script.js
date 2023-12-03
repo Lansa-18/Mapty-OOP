@@ -194,8 +194,6 @@ class App {
     // Render the new workout on the list
     this._renderWorkout(workout);
 
-    // Displaying the marker
-
     // Hide the form and clear the input fields
     this._hideForm();
   }
