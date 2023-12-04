@@ -131,6 +131,11 @@ class App {
 
     // Handling clicks on the map
     this.#map.on('click', this._showForm.bind(this));
+
+    // Rendering the markers
+    this.#workouts.forEach(work => {
+      this._renderWorkoutMarker(work);
+    })
   }
 
   _showForm(mapE) {
@@ -303,7 +308,7 @@ class App {
     });
 
     // Using the public interface
-    workout.click()
+    // workout.click()
   }
 
   // the localstorage api is a simple api and shoukd only be used for simple data. It is not a database.
