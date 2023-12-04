@@ -205,6 +205,9 @@ class App {
 
     // Hide the form and clear the input fields
     this._hideForm();
+
+    // Setting local storage to all workouts
+    this._setlocalStorage();
   }
 
   _renderWorkoutMarker(workout) {
@@ -298,6 +301,11 @@ class App {
 
     // Using the public interface
     workout.click()
+  }
+
+  // the localstorage api is a simple api and shoukd only be used for simple data. It is not a database.
+  _setlocalStorage(){
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
   }
 }
 
