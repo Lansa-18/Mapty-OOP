@@ -117,12 +117,9 @@ class App {
   _loadMap(position) {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
-    console.log(`https://www.google.com/maps/@${latitude},${longitude}`);
 
     const coords = [latitude, longitude];
-    console.log(this);
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
-    //   console.log(map);
 
     L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution:
@@ -237,7 +234,6 @@ class App {
   }
 
   _renderWorkout(workout) {
-    console.log(workout.description);
     let html = `
     <li class="workout workout--${workout.type}" data-id="${workout.id}">
       <h2 class="workout__title">${workout.description}</h2>
@@ -298,7 +294,6 @@ class App {
     const workout = this.#workouts.find(
       work => work.id === workoutEl.dataset.id
     );
-    console.log(workout);
 
     this.#map.setView(workout.coords, this.#mapZoomLevel, {
       animate: true,
@@ -318,7 +313,6 @@ class App {
 
   _getLocalStorage(){
     const data = JSON.parse(localStorage.getItem('workouts'));
-    console.log(data);
 
     if(!data) return;
 
