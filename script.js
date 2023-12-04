@@ -312,7 +312,7 @@ class App {
   }
 
   _getLocalStorage(){
-    const data = localStorage.getItem('workouts')
+    const data = JSON.parse(localStorage.getItem('workouts'));
     console.log(data);
   }
 }
