@@ -90,13 +90,16 @@ class App {
   #mapZoomLevel = 13;
 
   constructor() {
+    // Get user's position
     this._getPosition(); // Calling a function inside of the class itself
 
-    form.addEventListener('submit', this._newWorkout.bind(this));
+    // Get data from local storage
+    this._getLocalStorage();
 
+    // Attach event handlers
+    form.addEventListener('submit', this._newWorkout.bind(this));
     // The change event listner is available on the select tag and the event listens for any change that has been made in it.
     inputType.addEventListener('change', this._toggleElevationField);
-
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
@@ -306,6 +309,11 @@ class App {
   // the localstorage api is a simple api and shoukd only be used for simple data. It is not a database.
   _setlocalStorage(){
     localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+
+  _getLocalStorage(){
+    const data = localStorage.getItem('workouts')
+    console.log(data);
   }
 }
 
