@@ -318,6 +318,9 @@ class App {
     if(!data) return;
 
     this.#workouts = data;
+    this.#workouts.forEach(work => {
+      this._renderWorkout(work);
+    })
   }
 }
 
